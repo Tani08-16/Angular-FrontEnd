@@ -1,0 +1,22 @@
+<div class="dashboard-container">
+    <h1>Welcome to Your Exam Dashboard</h1>
+  
+    <div class="exam-section">
+      <h2>Upcoming Exams</h2>
+      <ul>
+        <li *ngFor="let exam of upcomingExams">
+          <strong>{{ exam.title }}</strong> - {{ exam.date }}
+        </li>
+      </ul>
+    </div>
+  
+    <div class="results-section">
+      <h2>Past Results</h2>
+      <ul>
+        <li *ngFor="let result of examResults">
+          <strong>{{ result.exam }}</strong> - Score: {{ result.score }}%
+        </li>
+      </ul>
+    </div>
+  </div>
+  
