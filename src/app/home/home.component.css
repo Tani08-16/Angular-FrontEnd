@@ -1,24 +1,42 @@
 nav {
-    display: flex;
-    justify-content: space-around;
-    background-color: #f8f9fa;
-    padding: 1rem;
-  }
-  
-  .main-content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 80vh;
-  }
-  
-  .left-image {
-    flex: 1;
-    text-align: center;
-  }
-  
-  .right-text {
-    flex: 1;
-    text-align: center;
-  }
-  
+  display: flex;
+  justify-content: space-around;
+  background-color: #f8f9fa;
+  padding: 1rem;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.main-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 85vh;
+  background: linear-gradient(to right, #f0f0f0, #e0e0e0);
+  border-radius: 12px;
+}
+
+.left-image {
+  flex: 1;
+  text-align: center;
+}
+
+.right-text {
+  flex: 1;
+  text-align: center;
+  animation: fadeIn 2s ease-in-out;
+}
+
+h1, h3 {
+  font-family: 'Poppins', sans-serif;
+  animation: slideIn 1.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
