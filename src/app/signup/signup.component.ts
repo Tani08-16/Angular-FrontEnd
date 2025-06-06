@@ -24,7 +24,7 @@ export class SignupComponent {
   constructor(private http: HttpClient, private router: Router) {}
 
   onSignup() {
-    this.http.post('http://localhost:7095/api/Auth/register', this.user)
+    this.http.post('http://localhost:5193/api/Auth/register', this.user)
       .subscribe({
         next: res => {
           alert('Signup successful!');
