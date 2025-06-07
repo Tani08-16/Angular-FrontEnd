@@ -1,15 +1,23 @@
+<br>
 <nav>
-  <!-- Before login -->
-  <a *ngIf="!isLoggedIn()" routerLink="/home">Home</a>
-  <a *ngIf="!isLoggedIn()" routerLink="/login">Login</a>
-  <a *ngIf="!isLoggedIn()" routerLink="/signup">SignUp</a>
-  <a *ngIf="!isLoggedIn()" routerLink="/about">About</a>
-  <a *ngIf="!isLoggedIn()" routerLink="/help">Help</a>
+  <!-- Portal Logo -->
+  <div class="nav-logo">
+    <img src="assets/images/logo.png" alt="TopRanker Logo">
+  </div>
 
-  <!-- After login -->
-  <a *ngIf="isLoggedIn()" [routerLink]="getDashboardLink()">Dashboard</a>
-  <a *ngIf="isLoggedIn()" routerLink="/help">Help</a>
-  <a *ngIf="isLoggedIn()" (click)="onLogout()">Logout</a>
+  <!-- Navigation Links -->
+  <div class="nav-links">
+    <!-- Before login -->
+    <a *ngIf="!isLoggedIn()" routerLink="/home">Home</a>
+    <a *ngIf="!isLoggedIn()" routerLink="/login">Login / SignUp</a>
+    <a *ngIf="!isLoggedIn()" routerLink="/about">About</a>
+    <a *ngIf="!isLoggedIn()" routerLink="/help">Help</a>
+
+    <!-- After login -->
+    <a *ngIf="isLoggedIn()" [routerLink]="getDashboardLink()">Dashboard</a>
+    <a *ngIf="isLoggedIn()" routerLink="/help">Help</a>
+    <a *ngIf="isLoggedIn()" (click)="onLogout()">Logout</a>
+  </div>
 </nav>
 
-<router-outlet></router-outlet> 
+<router-outlet></router-outlet>

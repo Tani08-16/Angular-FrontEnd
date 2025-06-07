@@ -13,8 +13,19 @@ import { jwtDecode } from 'jwt-decode';
 })
 export class LoginComponent {
   loginData = { email: '', password: '' };
+  isLogin: boolean = true; // Toggle state
 
   constructor(private http: HttpClient, private router: Router) {}
+
+  switchToLogin() {
+    this.isLogin = true;
+    this.router.navigate(['/login']);
+  }
+
+  switchToSignup() {
+    this.isLogin = false;
+    this.router.navigate(['/signup']);
+  }
 
   onLogin() {
     this.http.post('http://localhost:7095/api/Auth/login', this.loginData)

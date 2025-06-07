@@ -2,9 +2,19 @@
   <div class="container-fluid h-custom">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="main-content">
+
+        <!-- Toggle switch inside main content -->
+        <div class="toggle-container">
+          <div class="toggle">
+            <span [class.active]="isLogin" (click)="switchToLogin()">Login</span>
+            <span [class.active]="!isLogin" (click)="switchToSignup()">Sign Up</span>
+            <div class="slider" [class.moveRight]="!isLogin"></div>
+          </div>
+        </div>
+
         <div class="left-image">
           <div class="col-md-9 col-lg-6 col-xl-5">
-            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp" width="550"
+            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp" width="450"
               class="img-fluid" alt="Sample image">
           </div>
         </div>
@@ -29,20 +39,8 @@
                 <label class="form-label" for="login-password">Password</label>
               </div>
 
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="form-check mb-0">
-                  <input class="form-check-input me-2" type="checkbox" id="remember-me" />
-                  <label class="form-check-label" for="remember-me">
-                    Remember me
-                  </label>
-                </div>
-              </div>
-
               <div class="text-center text-lg-start mt-4 pt-2">
                 <button type="submit" class="btn btn-primary btn-lg">Login</button>
-                <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? 
-                  <a routerLink="/signup" class="link-danger">Register</a>
-                </p>
               </div>
             </form>
           </div>

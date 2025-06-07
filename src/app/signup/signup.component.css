@@ -1,4 +1,3 @@
-/* Global styles (if needed, else include in your global stylesheet) */
 body {
   background: linear-gradient(135deg, #89f7fe, #66a6ff);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -6,7 +5,41 @@ body {
   padding: 0;
 }
 
-/* Container styling for the signup form */
+.h-custom {
+  height: calc(100% - 73px);
+}
+
+@media (max-width: 450px) {
+  .h-custom {
+    height: 100%;
+  }
+}
+
+.main-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 450px;
+  max-width: 950px;
+  background: #f0f0f0;
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+  margin: 34px auto;
+}
+
+.left-image {
+  flex: 1;
+  text-align: center;
+  padding: 20px;
+}
+
+.right-text {
+  flex: 1;
+  text-align: center;
+  padding: 40px;
+}
+
 .signup-container {
   background: #fff;
   padding: 40px;
@@ -23,17 +56,19 @@ body {
   color: #333;
 }
 
-/* Form styling */
 form {
   display: flex;
   flex-direction: column;
+  gap: 20px;
+  align-items: center;
 }
 
 input {
+  width: 100%;
+  max-width: 300px;
   padding: 12px 16px;
-  margin-bottom: 16px;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 6px;
   font-size: 16px;
   transition: border 0.3s;
 }
@@ -44,34 +79,57 @@ input:focus {
 }
 
 button {
+  width: 100%;
+  max-width: 300px;
   padding: 12px;
   font-size: 16px;
+  font-weight: bold;
   border: none;
-  border-radius: 4px;
-  background: #66a6ff;
-  color: #fff;
+  border-radius: 6px;
+  background: linear-gradient(90deg, #66a6ff, #5892e0);
+  color: white;
   cursor: pointer;
   transition: background 0.3s ease;
 }
 
 button:hover {
-  background: #5892e0;
+  background: linear-gradient(90deg, #5892e0, #66a6ff);
 }
 
-/* Login prompt and button styling */
-.login-prompt {
-  margin-top: 30px;
+.toggle-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 20px; /* Places it at the top center inside main-content */
+  width: 100%;
 }
 
-.login-prompt p {
-  margin-bottom: 12px;
-  color: #333;
+.toggle {
+  display: flex;
+  position: relative;
+  background: #f0f0f0;
+  padding: 10px;
+  width: 220px;
+  border-radius: 50px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.login-btn {
-  background: #34bfa3;
+.toggle span {
+  flex: 1;
+  text-align: center;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-weight: bold;
+  color: #666;
+  transition: color 0.3s ease-in-out;
 }
 
-.login-btn:hover {
-  background: #2ea08c;
+.toggle span.active {
+  color: #007bff;
+}
+
+
+.slider.moveRight {
+  left: 50%;
 }
