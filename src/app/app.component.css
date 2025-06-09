@@ -1,64 +1,129 @@
-/* NAVBAR STYLES */
 nav {
   display: flex;
-  justify-content: space-between; /* Pushes logo left, links right */
+  justify-content: space-between;
   align-items: center;
   background-color: #2f2f2f;
-  width: 88%;
-  padding: 1rem 4rem;
-  border-radius: 20px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  width: 90%;
+  padding: 1rem 3rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  margin: 0 auto;
+  margin: 1rem auto;
+  position: relative;
+  z-index: 100;
 }
 
-/* Logo Styling */
 .nav-logo img {
   height: 50px;
-  width: auto;
 }
 
-/* Navigation Links */
 .nav-links {
   display: flex;
-  gap: 1.2rem;
+  gap: 2.2rem;
+  align-items: center;
 }
 
-.nav-links a {
-  position: relative;
-  padding: 0.5rem 1rem;
+.nav-links a,
+.profile-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
   text-decoration: none;
   color: white;
-  font-size: 0.9rem;
-  border-radius: 999px;
-  transition: color 0.3s ease-in-out, transform 0.2s ease-in-out;
-  z-index: 0;
-  overflow: hidden;
+  font-size: 1.07rem;
+  font-weight: 500;
+  background: none;
+  border: none;
+  padding: 0.3rem 0.7rem;
+  border-radius: 6px;
+  transition: background 0.2s, color 0.3s, transform 0.2s;
+  cursor: pointer;
+  outline: none;
 }
 
-/* Active Link Styling */
-.nav-links a.active-link {
-  color: #007bff; /* Blue for active page */
-  font-weight: 600;
-  transform: scale(1.1); /* Smooth size transition */
+.nav-links a.active,
+.nav-links a:hover,
+.profile-btn:hover,
+.profile-btn[aria-expanded="true"] {
+  background: #222c;
+  color: #66a6ff;
+  transform: translateY(-2px);
 }
 
-/* Hover Effect */
-.nav-links a:hover {
-  transform: scale(1.05);
+.profile-dropdown {
+  position: relative;
+  display: flex;
+  align-items: center;
+  z-index: 100;
 }
 
-/* Background effect when active */
-.nav-links a.active-link::before {
-  content: '';
+.profile-menu {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 100%;
-  height: 70%;
-  background-color: #007bff;
-  opacity: 0.2;
-  border-radius: 999px;
-  transform: translate(-50%, -50%);
-  transition: opacity 0.3s ease, width 0.4s ease;
+  top: 120%;
+  right: 0;
+  min-width: 180px;
+  background: #222;
+  border-radius: 10px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+  padding: 1rem 1.2rem 0.7rem 1.2rem;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-section strong {
+  display: block;
+  margin-bottom: 0.6rem;
+  color: #66a6ff;
+  font-size: 1.08rem;
+  letter-spacing: 0.2px;
+}
+
+.profile-menu a {
+  color: #fff;
+  font-size: 1rem;
+  text-decoration: none;
+  padding: 0.28rem 0;
+  border-radius: 4px;
+  transition: background 0.15s, color 0.18s;
+  cursor: pointer;
+  z-index: 9999;
+}
+
+.profile-menu a:hover {
+  background: #1d283a;
+  color: #66a6ff;
+}
+
+.profile-menu .logout-link {
+  margin-top: 0.6rem;
+  color: #ff5252;
+  font-weight: 600;
+  padding: 0.3rem 0;
+  border-radius: 4px;
+}
+
+.profile-menu .logout-link:hover {
+  background: #322;
+  color: #ff7b7b;
+}
+
+.profile-menu hr {
+  border: none;
+  border-top: 1px solid #444;
+  margin: 0.6rem 0;
+}
+
+.login-link {
+  background: #4a90e2;
+  color: white !important;
+  border-radius: 6px;
+  padding: 0.35rem 0.85rem;
+  font-weight: 600;
+  transition: background 0.2s, color 0.2s;
+}
+
+.login-link:hover {
+  background: #66a6ff;
+  color: #232323 !important;
 }

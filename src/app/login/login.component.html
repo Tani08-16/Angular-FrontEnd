@@ -3,47 +3,47 @@
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="main-content">
 
-        <!-- Toggle switch inside main content -->
+        <!-- Toggle switch -->
         <div class="toggle-container">
           <div class="toggle">
-            <span [class.active]="isLogin" (click)="switchToLogin()">Login</span>
-            <span [class.active]="!isLogin" (click)="switchToSignup()">Sign Up</span>
-            <div class="slider" [class.moveRight]="!isLogin"></div>
+            <span class="active">Login</span>
+            <span (click)="switchToSignup()">Sign Up</span>
+            <div class="slider"></div>
           </div>
         </div>
 
+        <!-- Left Image -->
         <div class="left-image">
-          <div class="col-md-9 col-lg-6 col-xl-5">
-            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp" width="450"
-              class="img-fluid" alt="Sample image">
-          </div>
+          <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+               width="450" class="img-fluid" alt="Sample image" />
         </div>
+
+        <!-- Right Form -->
         <div class="right-text">
-          <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-            <form (ngSubmit)="onLogin()">
-              <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
-                <p class="lead fw-normal mb-0 me-3">Login to Exam Portal</p>
-              </div>
+          <form (ngSubmit)="onLogin()">
+            <p class="form-title">Login to Exam Portal</p>
 
-              <!-- Email input -->
-              <div class="form-outline mb-4">
-                <input type="email" id="login-email" class="form-control form-control-lg"
-                  [(ngModel)]="loginData.email" name="email" placeholder="Enter your email" required />
-                <label class="form-label" for="login-email">Email address</label>
-              </div>
+            <!-- Email -->
+            <div class="form-outline">
+              <label for="login-email">Email</label>
+              <input type="email" id="login-email" [(ngModel)]="loginData.email" name="email"
+                     placeholder="Enter your email" required />
+            </div>
 
-              <!-- Password input -->
-              <div class="form-outline mb-3">
-                <input type="password" id="login-password" class="form-control form-control-lg"
-                  [(ngModel)]="loginData.password" name="password" placeholder="Enter password" required />
-                <label class="form-label" for="login-password">Password</label>
-              </div>
+            <!-- Password -->
+            <div class="form-outline password-container">
+              <label for="login-password">Password</label>
+              <input [type]="showPassword ? 'text' : 'password'" id="login-password"
+                     [(ngModel)]="loginData.password" name="password"
+                     placeholder="Enter password" required />
+              <span class="toggle-icon" (click)="showPassword = !showPassword">
+                {{ showPassword ? '🙈' : '👁️' }}
+              </span>
+            </div>
 
-              <div class="text-center text-lg-start mt-4 pt-2">
-                <button type="submit" class="btn btn-primary btn-lg">Login</button>
-              </div>
-            </form>
-          </div>
+            <button type="submit">Login</button>
+            <a class="forgot-password" (click)="onForgotPassword()">Forgot Password?</a>
+          </form>
         </div>
       </div>
     </div>

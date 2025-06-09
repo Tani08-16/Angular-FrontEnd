@@ -1,23 +1,39 @@
-<br>
 <nav>
-  <!-- Portal Logo -->
   <div class="nav-logo">
     <img src="assets/images/logo.png" alt="TopRanker Logo">
   </div>
-
-  <!-- Navigation Links -->
   <div class="nav-links">
-    <!-- Before login -->
-    <a *ngIf="!isLoggedIn()" routerLink="/home">Home</a>
-    <a *ngIf="!isLoggedIn()" routerLink="/login">Login / SignUp</a>
-    <a *ngIf="!isLoggedIn()" routerLink="/about">About</a>
-    <a *ngIf="!isLoggedIn()" routerLink="/help">Help</a>
+    <a routerLink="/home" routerLinkActive="active">Home</a>
+    <a *ngIf="isLoggedIn()" [routerLink]="getDashboardLink()" routerLinkActive="active">Dashboard</a>
+    <a routerLink="/test-series" routerLinkActive="active">Test Series</a>
 
-    <!-- After login -->
-    <a *ngIf="isLoggedIn()" [routerLink]="getDashboardLink()">Dashboard</a>
-    <a *ngIf="isLoggedIn()" routerLink="/help">Help</a>
-    <a *ngIf="isLoggedIn()" (click)="onLogout()">Logout</a>
+    <!-- Profile Dropdown for Student/Teacher -->
+    <div
+      *ngIf="isLoggedIn() && (userRole === 'Student' || userRole === 'Teacher')"
+      class="profile-dropdown"
+      (mouseleave)="closeProfileDropdown()"
+    >
+      <a href="#" class="profile-btn" (click)="onProfileClick($event)" [attr.aria-expanded]="profileDropdownOpen">Profile ▼</a>
+      <div class="profile-menu" *ngIf="profileDropdownOpen">
+        <div class="profile-section">
+          <ng-container *ngIf="userRole === 'Student'">
+            <strong>Student Profile</strong>
+            <a routerLink="/student/profile" (click)="closeProfileDropdown()">View Profile</a>
+            <a routerLink="/student/settings" (click)="closeProfileDropdown()">Settings</a>
+          </ng-container>
+          <ng-container *ngIf="userRole === 'Teacher'">
+            <strong>Teacher Profile</strong>
+            <a routerLink="/teacher/profile" (click)="closeProfileDropdown()">View Profile</a>
+            <a routerLink="/teacher/settings" (click)="closeProfileDropdown()">Settings</a>
+          </ng-container>
+          <hr>
+          <a class="logout-link" (click)="onLogout()">Logout</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- If not logged in, show login/signup -->
+    <a *ngIf="!isLoggedIn()" routerLink="/login" class="login-link">Login & Signup</a>
   </div>
 </nav>
-
 <router-outlet></router-outlet>

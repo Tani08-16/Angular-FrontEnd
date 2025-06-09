@@ -1,0 +1,97 @@
+<div *ngIf="showInstructions" class="instructions-box">
+  <h2>{{ examTitle }}</h2>
+  <p>Please read the following instructions carefully before starting the exam:</p>
+  <ul>
+    <li>You can navigate between questions using the palette.</li>
+    <li>Use "Save & Next" to save your answer and go to the next question.</li>
+    <li>You can mark a question for review and return later.</li>
+    <li>Timer will automatically submit the exam when it ends.</li>
+  </ul>
+  <label>
+    <input type="checkbox" [(ngModel)]="acceptedInstructions" />
+    I have read and accept the exam instructions.
+  </label>
+  <br />
+  <button (click)="startExam()">Start Exam</button>
+</div>
+
+<div *ngIf="!showInstructions && questions.length" class="exam-container">
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <h3>{{ examTitle }}</h3>
+    <div class="timer">⏳ {{ displayTimer }}</div>
+  </div>
+
+  <div class="exam-body">
+    <!-- Left Side: Question & Options -->
+    <div class="question-panel">
+      <div class="question-header">
+        <h4>Question {{ currentQuestionIndex + 1 }} of {{ questions.length }}</h4>
+      </div>
+
+      <div class="question-text">
+        {{ questions[currentQuestionIndex]?.text }}
+      </div>
+
+      <div class="options-grid">
+        <button
+          *ngFor="let opt of ['option1', 'option2', 'option3', 'option4']"
+          class="option-button"
+          [ngClass]="getOptionClass(questions[currentQuestionIndex][opt])"
+          (click)="selectAnswer(questions[currentQuestionIndex][opt])">
+          {{ questions[currentQuestionIndex][opt] }}
+        </button>
+      </div>
+
+      <div class="nav-buttons">
+        <button (click)="goToPrevious()" [disabled]="currentQuestionIndex === 0">Back</button>
+        <button (click)="clearResponse()">Clear Response</button>
+        <button (click)="markAndSave()">Mark for Review & Next</button>
+        <button (click)="goToNext()" [disabled]="currentQuestionIndex === questions.length - 1">Save & Next</button>
+      </div>
+    </div>
+
+    <!-- Right Side: Palette -->
+    <div class="palette-panel">
+      <h4>Question Palette</h4>
+      <div class="palette">
+        <button
+          *ngFor="let q of questions; let i = index"
+          (click)="goToQuestion(i)"
+          [ngClass]="{
+            'answered': isAnswered(q.questionId),
+            'marked': isMarked(q.questionId),
+            'active': currentQuestionIndex === i
+          }">
+          {{ i + 1 }}
+        </button>
+      </div>
+      <div class="legend">
+        <div><span class="dot green"></span> Answered</div>
+        <div><span class="dot red"></span> Not Answered</div>
+        <div><span class="dot blue"></span> Marked for Review</div>
+        <div><span class="dot gray"></span> Not Visited</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Submit -->
+  <div class="submit-btn-container">
+    <button (click)="submitExam()">Submit Test</button>
+  </div>
+</div>
+
+<!-- Confirmation Dialog -->
+<div *ngIf="showConfirmation" class="confirmation-overlay">
+  <div class="confirmation-box">
+    <h3>Confirm Submission</h3>
+    <p><strong>Attempted:</strong> {{ getStats().attempted }}</p>
+    <p><strong>Not Attempted:</strong> {{ getStats().notAttempted }}</p>
+    <p><strong>Marked for Review:</strong> {{ getStats().marked }}</p>
+
+    <div class="confirm-buttons">
+      <button (click)="cancelSubmit()">Back to Exam</button>
+      <button class="submit-final" (click)="confirmSubmit()">Submit Exam</button>
+    </div>
+  </div>
+</div>

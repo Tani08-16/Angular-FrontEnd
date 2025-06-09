@@ -1,0 +1,10 @@
+.results-wrapper {
+    text-align: center;
+    padding: 50px;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .results-wrapper h2 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+  }

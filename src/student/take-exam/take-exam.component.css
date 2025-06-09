@@ -1,0 +1,217 @@
+.exam-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f4f4f4;
+}
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #004080;
+  color: white;
+  padding: 10px 20px;
+}
+
+.exam-body {
+  display: flex;
+  flex: 1;
+}
+
+.question-panel {
+  flex: 3;
+  padding: 20px;
+  background: white;
+}
+
+.question-header {
+  margin-bottom: 10px;
+}
+
+.question-text {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.options-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.option-button {
+  padding: 12px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  background-color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.option-button.selected {
+  background-color: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+.nav-buttons {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav-buttons button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  background-color: #0069d9;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.palette-panel {
+  flex: 1;
+  padding: 20px;
+  background-color: #ffffff;
+  border-left: 1px solid #ddd;
+}
+
+.palette {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.palette button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: #eee;
+}
+
+.palette button.answered {
+  background-color: #28a745;
+  color: white;
+}
+
+.palette button.marked {
+  background-color: #007bff;
+  color: white;
+}
+
+.palette button.active {
+  border: 2px solid #000;
+}
+
+.legend {
+  margin-top: 20px;
+  font-size: 13px;
+}
+
+.legend .dot {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+.dot.green { background-color: #28a745; }
+.dot.red { background-color: #dc3545; }
+.dot.blue { background-color: #007bff; }
+.dot.gray { background-color: #ccc; }
+
+.submit-btn-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+.submit-btn-container button {
+  background-color: #ff5722;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.instructions-box {
+  padding: 30px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  margin: 40px auto;
+  max-width: 700px;
+  border-radius: 8px;
+}
+
+.instructions-box h2 {
+  margin-bottom: 15px;
+}
+
+.instructions-box ul {
+  margin-bottom: 15px;
+}
+
+.instructions-box button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.confirmation-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.confirmation-box {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  width: 300px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.confirm-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.confirm-buttons button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.confirm-buttons .submit-final {
+  background-color: #dc3545;
+  color: white;
+}
+
+.confirm-buttons button:first-child {
+  background-color: #007bff;
+  color: white;
+}

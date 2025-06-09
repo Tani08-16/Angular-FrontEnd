@@ -9,7 +9,7 @@ import { HomeComponent } from './home/home.component';
 import { SignupComponent } from './signup/signup.component';
 import { AboutComponent } from './about/about.component';
 import { HelpCmpComponent } from './help-cmp/help-cmp.component';
-import { StudentDashboardComponent } from './student-dashboard/student-dashboard.component';
+import { StudentDashboardComponent } from '../student/dashboard/student-dashboard.component';
 import { TeacherDashboardComponent } from './teacher-dashboard/teacher-dashboard.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { appRoutes } from './app.routes';
