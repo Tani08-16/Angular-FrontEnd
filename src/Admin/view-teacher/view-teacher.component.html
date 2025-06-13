@@ -1,0 +1,15 @@
+<div class="dashboard-container">
+    <button class="go-back" (click)="goBack()">← Back</button>
+    <h1>👨‍🏫 All Teachers</h1>
+  
+    <div *ngIf="isLoading" class="message">Loading teachers...</div>
+    <div *ngIf="error && !isLoading" class="message error">{{ error }}</div>
+  
+    <div class="teacher-list" *ngIf="!isLoading && teachers.length > 0">
+      <div class="teacher-card" *ngFor="let teacher of teachers">
+        <h2>{{ teacher.name }}</h2>
+        <p><strong>Email:</strong> {{ teacher.email }}</p>
+        <p><strong>Role:</strong> {{ teacher.role }}</p>
+      </div>
+    </div>
+  </div>
