@@ -31,7 +31,7 @@ nav {
   left: 0;
   width: 100%;
   height: 100%;
-  background: url('https://5minuteenglish.com/wp-content/uploads/2024/04/students-in-a-classroom-taking-a-test.webp') no-repeat center center fixed;
+  background: url('/Gradientbg.jpg') no-repeat center center fixed;
   background-size: cover;
   z-index: -1; /* Keeps it behind all other content */
   filter: blur(10px); /* Blurs the image */

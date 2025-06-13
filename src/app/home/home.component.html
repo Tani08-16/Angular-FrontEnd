@@ -1,111 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test Series</title>
-    <link rel="stylesheet" href="home.component.css">
-</head>
-<body>
-  <div class="main-content">
-    <div class="left-image">
-      <img src="https://5minuteenglish.com/wp-content/uploads/2024/04/students-in-a-classroom-taking-a-test.webp" alt="Image" width="510">
-      
+<div class="welcome-hero">
+  <div class="welcome-left-card">
+    <div class="welcome-left">
+      <h1 class="welcome-title">Welcome to</h1>
+      <div class="brand-name">TOPSCORER</div>
+      <div class="slogan">Believe in yourself !!</div>
+      <button class="hero-btn" (click)="navigateTo('test-series')">Explore Test Series</button>
     </div>
-    <div class="right-text">
-        <h1>Online Exam Portal</h1>
-        <h3>Welcome to Exam Portal!</h3>
-        <h3>Designed exclusively for college and school exams.</h3>
-    </div>
+  </div>
+  <div class="welcome-right-logo">
+    <img src="/HomePage_Logo.png" alt="Top Scorer Logo" class="home-logo-img" />
+  </div>
 </div>
+ 
+<section class="hero solid-card">
+  <div class="quote-box">
+    <span class="quote">{{ displayedQuote }}</span>
+  </div>
+</section>
 
-<div class="test-series">
-    <h2>Popular Test Series</h2>
-    <p>Test RankNG provides online test series with a lot of mock tests for SSC, Railways and Other Competitive Exams.</p>
-    <div class="test-series-container">
-        <div class="test-series-item">
-            <img src="https://th.bing.com/th/id/OIP.X_mrKUOgb1KDwo_WGstcFAHaHa?w=250&h=250&c=8&rs=1&qlt=90&o=6&dpr=1.5&pid=3.1&rm=2" alt="Logo" class="logo" >
-            <button (click)="navigateTo('view-plans')">View Plans</button>
-            <h3>DP Constable 2025</h3>
-            <p>• 20 Full Mock Tests</p>
-            <button (click)="navigateTo('view-all-tests')">View All Tests</button>
-            <button (click)="navigateTo('attempt-now')">Attempt Now</button>
-        </div>
-        <div class="test-series-item">
-            <img src="https://th.bing.com/th/id/OIP.X_mrKUOgb1KDwo_WGstcFAHaHa?w=250&h=250&c=8&rs=1&qlt=90&o=6&dpr=1.5&pid=3.1&rm=2" alt="Logo" class="logo" >
-            <button (click)="navigateTo('view-plans')">View Plans</button>
-            <h3>RRB ALP 2025</h3>
-            <p>• 21 Full Mock Tests</p>
-            <p>• 7 Previous Year Papers</p>
-            <button (click)="navigateTo('view-all-tests')">View All Tests</button>
-            <button (click)="navigateTo('attempt-now')">Attempt Now</button>
-        </div>
-        <div class="test-series-item">
-            <img src="https://th.bing.com/th/id/OIP.X_mrKUOgb1KDwo_WGstcFAHaHa?w=250&h=250&c=8&rs=1&qlt=90&o=6&dpr=1.5&pid=3.1&rm=2" alt="Logo" class="logo" >
-            <button (click)="navigateTo('view-plans')">View Plans</button>
-            <h3>Bihar Police Constable 2025</h3>
-            <p>• 20 Full Tests</p>
-            <button (click)="navigateTo('view-all-tests')">View All Tests</button>
-            <button (click)="navigateTo('attempt-now')">Attempt Now</button>
-        </div>
+<!-- Test Series Section -->
+<section class="test-section">
+  <h2>Popular Test Series</h2>
+  <div class="test-grid">
+    <div class="test-card" *ngFor="let series of popularSeries">
+      <img [src]="series.img" [alt]="series.title" class="test-icon" />
+      <h3>{{ series.title }}</h3>
+      <ul>
+        <li *ngFor="let item of series.details">{{ item }}</li>
+      </ul>
+      <!-- Update this button for proper routing and login check -->
+      <button (click)="attemptExam(series)" class="start-btn">Attempt Now</button>
+      <div class="meta">👥 {{ series.attempts }} attempts</div>
     </div>
-    <button class="explore-all" (click)="navigateTo('explore-all')">Explore All Test Series</button>
-</div>
-
-
-    <footer>
-      <div class="footer-content">
-          <div class="footer-section">
-              <img src="C:\Users\2403590\OneDrive - Cognizant\Desktop\Project frontend\Angular-FrontEnd\src\app\images\HomePage Logo.png" alt="TopRanker Logo">
-              <p>Top Ranker is democratizing education, making it accessible to all.<br>Join the revolution, learn on India's largest learning platform.</p>
-              <a href="#"><img src="google-play-button-url-here" alt="Google Play Button"></a>
-          </div>
-          <div class="footer-section">
-              <h3>Company</h3>
-              <ul>
-                  <li><a href="#">About Us</a></li>
-                  <li><a href="#">Careers</a></li>
-              </ul>
-          </div>
-          <div class="footer-section">
-              <h3>Help & Support</h3>
-              <ul>
-                  <li><a href="#">Contact</a></li>
-                  <li><a href="#">Privacy</a></li>
-                  <li><a href="#">Terms & Conditions</a></li>
-                  <li><a href="#">Services</a></li>
-                  <li><a href="#">Refund Policy</a></li>
-                  <li><a href="#">Shipping</a></li>
-                  <li><a href="#">Source of Government Information</a></li>
-              </ul>
-          </div>
-          <div class="footer-section">
-              <h3>Quick Links</h3>
-              <ul>
-                  <li><a href="#">E Books</a></li>
-                  <li><a href="#">Online Test Series</a></li>
-                  <li><a href="#">Free Test</a></li>
-                  <li><a href="#">Live Test</a></li>
-                  <li><a href="#">Daily Quiz</a></li>
-              </ul>
-          </div>
-      </div>
-      <div class="contact-details">
-          <p>Reach out to us:</p>
-          <p>Phone: +91-6388974650</p>
-          <p>Email: hel.in</p>
-      </div>
-      <div class="social-icons">
-          <a href="#"><img src="twitter-icon-url-here" alt="Twitter"></a>
-          <a href="#"><img src="instagram-icon-url-here" alt="Instagram"></a>
-      </div>
-      <div class="contact-details">
-          <p>Copyright ©2014-2024 Test Ranking, All rights reserved.</p>
-      </div>
-    </footer>
-    
-</body>
-</html>
-
-
-
+  </div>
+  <div class="center">
+    <button class="hero-btn" (click)="navigateTo('test-series')">Explore All Tests</button>
+  </div>
+</section>
+  
+<footer class="footer">
+  <div class="footer-links">
+    <a routerLink="/about">About</a>
+    <a (click)="navigateTo('test-series')">Test Series</a>
+    <a routerLink="/help">Help</a>
+  </div>
+  <div class="footer-copy">
+    © 2025 Team Error 404. All rights reserved.
+  </div>
+</footer>

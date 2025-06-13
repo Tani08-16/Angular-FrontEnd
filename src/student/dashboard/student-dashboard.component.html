@@ -1,32 +1,32 @@
 <div class="dashboard-container">
-    <h1>Hi, {{ studentName }} 👋</h1>
-  
-    <div class="tip-box">
-      💡 <em>{{ randomTip }}</em>
+  <h1>Hi, {{ studentName }} 👋</h1>
+
+  <div class="tip-box">
+    💡 <em>{{ randomTip }}</em>
+  </div>
+
+  <div class="stats-cards">
+    <div class="card badge complete">
+      <h2>{{ totalExams }}</h2>
+      <p>Total Exams</p>
     </div>
-  
-    <div class="stats-cards">
-      <div class="card badge complete">
-        <h2>{{ totalExams }}</h2>
-        <p>Total Exams</p>
-      </div>
-      <div class="card badge attempted">
-        <h2>{{ attemptedExams }}</h2>
-        <p>Attempted</p>
-      </div>
-      <div class="card badge pass">
-        <h2>{{ passedExams }}</h2>
-        <p>Passed</p>
-      </div>
-      <div class="card badge fail">
-        <h2>{{ failedExams }}</h2>
-        <p>Failed</p>
-      </div>
+    <div class="card badge attempted">
+      <h2>{{ attemptedExams }}</h2>
+      <p>Attempted</p>
     </div>
-  
-    <div class="actions">
-      <button (click)="goToLeaderboard()">🏆 View Leaderboard</button>
-      <button (click)="goToExams()">📘 View Available Exams</button>
-      <button (click)="goToResults()">📊 View My Results</button>
+    <div class="card badge pass">
+      <h2>{{ passedExams }}</h2>
+      <p>Passed</p>
+    </div>
+    <div class="card badge fail">
+      <h2>{{ failedExams }}</h2>
+      <p>Failed</p>
     </div>
   </div>
+
+  <div class="actions">
+    <button (click)="goToLeaderboard()">🏆 View Leaderboard</button>
+    <button (click)="goToExams()">📘 View Available Exams</button>
+    <button (click)="goToResults()">📊 View My Results</button>
+  </div>
+</div>

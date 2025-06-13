@@ -1,15 +1,18 @@
 <nav>
   <div class="nav-logo">
-    <img src="assets/images/logo.png" alt="TopRanker Logo">
+    <img src="/HomePage_Logo.png" alt="TopRanker Logo">
   </div>
   <div class="nav-links">
     <a routerLink="/home" routerLinkActive="active">Home</a>
+    <span class="separator">|</span>
     <a *ngIf="isLoggedIn()" [routerLink]="getDashboardLink()" routerLinkActive="active">Dashboard</a>
+    <span *ngIf="isLoggedIn()" class="separator">|</span>
     <a (click)="goToTestSeries()" [class.active]="isTestSeriesActive()">Test Series</a>
+    <span class="separator">|</span>
 
     <!-- Profile Dropdown for Student/Teacher -->
     <div
-      *ngIf="isLoggedIn() && (userRole === 'Student' || userRole === 'Teacher')"
+      *ngIf="isLoggedIn() && (userRole === 'Student' || userRole === 'Teacher' || userRole === 'Admin')"
       class="profile-dropdown"
       (mouseleave)="closeProfileDropdown()"
     >
@@ -25,6 +28,11 @@
             <strong>Teacher Profile</strong>
             <a routerLink="/teacher/profile" (click)="closeProfileDropdown()">View Profile</a>
             <a routerLink="/teacher/settings" (click)="closeProfileDropdown()">Settings</a>
+          </ng-container>
+          <ng-container *ngIf="userRole === 'Admin'">
+            <strong>Admin Profile</strong>
+            <a routerLink="/admin/profile" (click)="closeProfileDropdown()">View Profile</a>
+            <a routerLink="/admin/settings" (click)="closeProfileDropdown()">Settings</a>
           </ng-container>
           <hr>
           <a class="logout-link" (click)="onLogout()">Logout</a>

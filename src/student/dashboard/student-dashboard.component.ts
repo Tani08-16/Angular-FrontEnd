@@ -29,31 +29,29 @@ export class StudentDashboardComponent implements OnInit {
 
   ngOnInit(): void {
     const token = localStorage.getItem('token');
-    const payload = JSON.parse(atob(token!.split('.')[1]));
-    const userId = payload?.UserId;
-    this.studentName = payload?.name || 'Student';
+    if (token) {
+      const payload = JSON.parse(atob(token.split('.')[1]));
+      this.studentName = payload?.name || 'Student';
+    }
 
     this.randomTip = this.tips[Math.floor(Math.random() * this.tips.length)];
 
-    this.http.get<any[]>(`https://localhost:7095/api/Exam`).subscribe(data => {
-      this.totalExams = data.length;
-    });
-
-    this.http.get<any[]>(`https://localhost:7095/api/Result/user/${userId}`).subscribe(results => {
-      this.attemptedExams = results.length;
-      this.passedExams = results.filter(r => (r.totalMarks / r.exam.totalMarks) * 100 >= 40).length;
-      this.failedExams = results.length - this.passedExams;
-    });
+    // No need to manually add headers; AuthInterceptor will handle it
+    this.http.get<any>('https://localhost:7095/api/User/dashboard-metrics')
+      .subscribe(metrics => {
+        this.totalExams = metrics.totalExams;
+        this.attemptedExams = metrics.attempted;
+        this.passedExams = metrics.passed;
+        this.failedExams = metrics.failed;
+      });
   }
 
   goToLeaderboard() {
     this.router.navigate(['/student/leaderboard']);
   }
-
   goToExams() {
     this.router.navigate(['/student/exams']);
   }
-
   goToResults() {
     this.router.navigate(['/student/results']);
   }
