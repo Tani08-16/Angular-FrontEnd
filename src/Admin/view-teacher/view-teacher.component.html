@@ -10,6 +10,24 @@
         <h2>{{ teacher.name }}</h2>
         <p><strong>Email:</strong> {{ teacher.email }}</p>
         <p><strong>Role:</strong> {{ teacher.role }}</p>
+        <button class="delete-btn" (click)="confirmDelete(teacher)">🗑️</button>
       </div>
     </div>
+  
+    <!-- Confirmation Modal -->
+    <div class="modal-overlay" *ngIf="teacherToDelete">
+      <div class="modal">
+        <h3>Are you sure you want to delete <strong>{{ teacherToDelete.name }}</strong>?</h3>
+        <div class="modal-buttons">
+          <button class="cancel" (click)="cancelDelete()">Cancel</button>
+          <button class="delete" (click)="deleteTeacher()">Delete</button>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Success Message Popup -->
+    <div class="success-popup" *ngIf="successMessage">
+      {{ successMessage }}
+    </div>
   </div>
+  
