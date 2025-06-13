@@ -21,7 +21,6 @@ import { ViewStudentsComponent } from '../Admin/view-students/view-students.comp
 
 // Admin components
 import { AddTeacherComponent } from '../Admin/add-teacher/add-teacher.component';
-import { AdminProfileComponent } from '../Admin/profile/admin-profile.component'; // ✅ Correct class name and path
 
 export const appRoutes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -47,7 +46,7 @@ export const appRoutes: Routes = [
 
   // Teacher Route
   { path: 'teacher-dashboard', component: TeacherDashboardComponent },
-  { path: 'teacher/profile', component: TeacherProfileComponent},
+  { path: 'teacher/profile', component: TeacherProfileComponent },
 
   // ✅ Admin Routes
   {
@@ -67,18 +66,20 @@ export const appRoutes: Routes = [
   },
   { path: 'admin/teachers', component: ViewTeacherComponent },
   { path: 'admin/students', component: ViewStudentsComponent },
+
   // Test Series
-  { path: 'test-series', component: TestSeriesComponent },,
-  { path: 'teacher/test-series', component: TeacherTestSeriesComponent},
+  { path: 'test-series', component: TestSeriesComponent },
+  { path: 'teacher/test-series', component: TeacherTestSeriesComponent },
   { path: 'teacher/create-exam', component: CreateExamComponent },
-  { path: 'teacher/exam/edit/:id', component: EditExamComponent },       // <-- ADD THIS
-  { path: 'teacher/exam/:id', component: ViewExamComponent },            // <-- ADD THIS
-  { path: '', redirectTo: '/teacher/test-series', pathMatch: 'full' },
-  { path: '**', redirectTo: '/teacher/test-series' },
+  { path: 'teacher/exam/edit/:id', component: EditExamComponent }, // <-- ADD THIS
+  { path: 'teacher/exam/:id', component: ViewExamComponent },      // <-- ADD THIS
+
   {
     path: 'teacher/exam/:examId/manage-questions',
     loadComponent: () =>
       import('./teacher/manage-questions/manage-questions.component').then(m => m.ManageQuestionsComponent)
   },
 
+  // Wildcard and fallback routes (keep these at the end)
+  { path: '**', redirectTo: '/teacher/test-series' }
 ];
