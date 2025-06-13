@@ -8,11 +8,11 @@
   .exam-list h2 {
     text-align: center;
     margin-bottom: 30px;
-    color: #2c3e50;
+    color: #ffffff;
   }
   
   .exam-card {
-    background-color: #f8f9fa;
+    background-color: #f8f9fab0;
     border: 1px solid #dcdcdc;
     border-radius: 10px;
     padding: 20px;
