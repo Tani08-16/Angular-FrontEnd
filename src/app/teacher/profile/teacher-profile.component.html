@@ -1,0 +1,48 @@
+<div class="profile-bg">
+    <div class="profile-card">
+      <h2>Teacher Profile</h2>
+  
+      <div class="profile-avatar-section">
+        <ng-container *ngIf="profileImageUrl; else avatarCircle">
+          <img [src]="profileImageUrl" alt="Profile Photo" class="profile-photo">
+        </ng-container>
+        <ng-template #avatarCircle>
+          <div class="avatar-circle">{{ avatarLetter }}</div>
+        </ng-template>
+        <div class="profile-photo-upload">
+          <label for="fileInput" class="custom-file-upload">
+            <input id="fileInput" type="file" (change)="onFileSelected($event)" accept="image/*" />
+            Choose Photo
+          </label>
+          <button class="btn blue" (click)="uploadPhoto()" [disabled]="!selectedFile || isUploading">
+            {{ isUploading ? 'Uploading...' : 'Upload Photo' }}
+          </button>
+          <div *ngIf="photoUploadMsg" class="success-msg">{{ photoUploadMsg }}</div>
+          <div *ngIf="photoUploadError" class="error-msg">{{ photoUploadError }}</div>
+        </div>
+      </div>
+  
+      <div class="profile-info">
+        <div>
+          <label>Name</label>
+          <input [value]="user.name || ''" readonly class="readonly-field" />
+        </div>
+        <div>
+          <label>Email</label>
+          <input [value]="user.email || ''" readonly class="readonly-field" />
+        </div>
+      </div>
+  
+      <form class="profile-password-form" (ngSubmit)="changePassword()">
+        <h3>Change Password</h3>
+        <input type="password" placeholder="Current Password" [(ngModel)]="currentPassword" name="currentPassword" required minlength="6" />
+        <input type="password" placeholder="New Password" [(ngModel)]="newPassword" name="newPassword" required minlength="6" />
+        <input type="password" placeholder="Confirm Password" [(ngModel)]="confirmPassword" name="confirmPassword" required minlength="6" />
+        <button type="submit" class="btn blue" [disabled]="isUpdatingPassword">
+          {{ isUpdatingPassword ? 'Updating...' : 'Update Password' }}
+        </button>
+        <div *ngIf="passwordMsg" class="success-msg">{{ passwordMsg }}</div>
+        <div *ngIf="passwordError" class="error-msg">{{ passwordError }}</div>
+      </form>
+    </div>
+  </div>
