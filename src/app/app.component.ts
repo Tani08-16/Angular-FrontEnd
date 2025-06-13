@@ -97,4 +97,17 @@ export class AppComponent implements OnInit {
   closeProfileDropdown(): void {
     this.profileDropdownOpen = false;
   }
+
+  goToTestSeries(): void {
+    const role = localStorage.getItem('userRole');
+    if (role === 'Teacher') {
+      this.router.navigate(['/teacher/test-series']);
+    } else {
+      this.router.navigate(['/test-series']);
+    }
+  }
+
+  isTestSeriesActive(): boolean {
+    return this.router.url.startsWith('/test-series') || this.router.url.startsWith('/teacher/test-series');
+  }
 }

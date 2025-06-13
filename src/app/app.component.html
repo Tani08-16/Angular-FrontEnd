@@ -5,7 +5,7 @@
   <div class="nav-links">
     <a routerLink="/home" routerLinkActive="active">Home</a>
     <a *ngIf="isLoggedIn()" [routerLink]="getDashboardLink()" routerLinkActive="active">Dashboard</a>
-    <a routerLink="/test-series" routerLinkActive="active">Test Series</a>
+    <a (click)="goToTestSeries()" [class.active]="isTestSeriesActive()">Test Series</a>
 
     <!-- Profile Dropdown for Student/Teacher -->
     <div
