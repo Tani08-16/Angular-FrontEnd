@@ -11,7 +11,8 @@ import { AboutComponent } from './about/about.component';
 import { HelpCmpComponent } from './help-cmp/help-cmp.component';
 import { StudentDashboardComponent } from '../student/dashboard/student-dashboard.component';
 import { TeacherDashboardComponent } from './teacher-dashboard/teacher-dashboard.component';
-import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { AdminDashboardComponent } from '../Admin/dashboard/admin-dashboard.component';
+import { AddTeacherComponent } from './add-teacher/add-teacher.component'; // Import AddTeacherComponent
 import { appRoutes } from './app.routes';
 
 @NgModule({
@@ -23,7 +24,8 @@ import { appRoutes } from './app.routes';
     HelpCmpComponent,
     StudentDashboardComponent,
     TeacherDashboardComponent,
-    AdminDashboardComponent
+    AdminDashboardComponent,
+    AddTeacherComponent // Declare AddTeacherComponent
   ],
   imports: [
     BrowserModule,
