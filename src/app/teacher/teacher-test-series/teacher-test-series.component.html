@@ -1,0 +1,96 @@
+<div class="test-series-bg">
+  <div class="top-content-card">
+    <h1>Manage Test Series</h1>
+    <p class="subtitle">
+      View, edit, and manage all test series for your students. Use the options below to explore or update exams.
+    </p>
+    <button routerLink="/teacher/exam/create" class="start-now-btn">+ Create New Exam</button>
+    <div class="filter-row">
+      <div class="category-dropdown">
+        <label for="categorySelect">Filter by Category:</label>
+        <select id="categorySelect" [(ngModel)]="selectedCategoryId">
+          <option [ngValue]="null">All Categories</option>
+          <option *ngFor="let category of categories" [ngValue]="category.categoryId">
+            {{ category.categoryName }}
+          </option>
+        </select>
+      </div>
+      <div class="category-search">
+        <input
+          type="text"
+          placeholder="Search categories..."
+          [(ngModel)]="searchTerm"
+          autocomplete="off"
+        />
+      </div>
+    </div>
+    <div class="categories-grid">
+      <div *ngFor="let category of filteredCategories()" class="category-card">
+        <div class="card-content" [style.background]="getCategoryColor(category.categoryId)">
+          <div class="card-label">{{ category.categoryName }}</div>
+          <button class="view-tests-btn"
+                  (click)="toggleCategory(category.categoryId)">
+            {{ expandedCategoryId === category.categoryId ? 'Hide Exams' : 'View All Exams' }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="divider"></div>
+
+  <!-- Show all exams for all categories if no single category is selected -->
+  <div *ngIf="!selectedCategoryId" class="exams-list-expanded">
+    <ng-container *ngFor="let cat of filteredCategories()">
+      <div *ngIf="cat.exams.length > 0 && (expandedCategoryId === null || expandedCategoryId === cat.categoryId)" class="all-category-block">
+        <div class="exam-category-title" [style.color]="getCategoryColor(cat.categoryId)">
+          {{ cat.categoryName }}
+        </div>
+        <div class="exams-stack">
+          <div *ngFor="let exam of cat.exams" class="exam-list-item card-exam">
+            <div class="exam-list-left">
+              <div class="exam-title"><b>{{ exam.title }}</b></div>
+              <div class="exam-desc">{{ exam.description }}</div>
+              <div class="exam-meta">
+                <span>📝 {{ exam.totalMarks }} Marks</span>
+                <span>⏰ {{ exam.duration }} Mins</span>
+              </div>
+            </div>
+            <div class="exam-list-right">
+              <button class="start-now-btn" (click)="viewExamDetails(exam.examId)">View</button>
+              <button class="start-now-btn" (click)="editExam(exam.examId)">Edit</button>
+              <button class="delete-btn" (click)="deleteExam(exam.examId)">Delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+
+  <!-- Show only exams for the selected and expanded category -->
+  <div *ngIf="selectedCategoryId && expandedCategoryId" class="exams-list-expanded">
+    <ng-container *ngFor="let cat of filteredCategories()">
+      <ng-container *ngIf="cat.categoryId === expandedCategoryId && cat.exams.length > 0">
+        <div class="exam-category-title" [style.color]="getCategoryColor(cat.categoryId)">
+          {{ cat.categoryName }}
+        </div>
+        <div class="exams-stack">
+          <div *ngFor="let exam of cat.exams" class="exam-list-item card-exam">
+            <div class="exam-list-left">
+              <div class="exam-title"><b>{{ exam.title }}</b></div>
+              <div class="exam-desc">{{ exam.description }}</div>
+              <div class="exam-meta">
+                <span>📝 {{ exam.totalMarks }} Marks</span>
+                <span>⏰ {{ exam.duration }} Mins</span>
+              </div>
+            </div>
+            <div class="exam-list-right">
+              <button class="start-now-btn" (click)="viewExamDetails(exam.examId)">View</button>
+              <button class="start-now-btn" (click)="editExam(exam.examId)">Edit</button>
+              <button class="delete-btn" (click)="deleteExam(exam.examId)">Delete</button>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </ng-container>
+  </div>
+</div>
