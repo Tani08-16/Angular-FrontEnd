@@ -1,0 +1,51 @@
+<h2>Manage Questions</h2>
+
+<ul>
+  <li *ngFor="let q of questions">
+    <strong>{{ q.questionText }}</strong>
+    <br>
+    A: {{ q.optionA }} &nbsp;|&nbsp; B: {{ q.optionB }} &nbsp;|&nbsp; 
+    C: {{ q.optionC }} &nbsp;|&nbsp; D: {{ q.optionD }}
+    <br>
+    Correct Option: {{ q.correctOption }}
+    <br>
+    <button (click)="editQuestion(q)">Edit</button>
+    <button (click)="deleteQuestion(q.questionId)">Delete</button>
+    <hr>
+  </li>
+</ul>
+
+<form [formGroup]="questionForm" (ngSubmit)="editingQuestionId ? updateQuestion() : addQuestion()">
+  <label>
+    Question:
+    <input formControlName="questionText" placeholder="Enter question" />
+  </label>
+  <br>
+  <label>
+    Option A:
+    <input formControlName="optionA" placeholder="Option A" />
+  </label>
+  <br>
+  <label>
+    Option B:
+    <input formControlName="optionB" placeholder="Option B" />
+  </label>
+  <br>
+  <label>
+    Option C:
+    <input formControlName="optionC" placeholder="Option C" />
+  </label>
+  <br>
+  <label>
+    Option D:
+    <input formControlName="optionD" placeholder="Option D" />
+  </label>
+  <br>
+  <label>
+    Correct Option:
+    <input formControlName="correctOption" placeholder="Correct Option" />
+  </label>
+  <br><br>
+  <button type="submit">{{ editingQuestionId ? 'Update' : 'Add' }} Question</button>
+  <button type="button" *ngIf="editingQuestionId" (click)="cancelEdit()">Cancel</button>
+</form>

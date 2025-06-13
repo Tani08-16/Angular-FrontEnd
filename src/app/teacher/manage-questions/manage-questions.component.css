@@ -1,0 +1,70 @@
+h2 {
+    color: #1976d2;
+    margin-bottom: 1rem;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  li {
+    background: #f5f5f5;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px #00000008;
+  }
+  
+  strong {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+  }
+  
+  button {
+    margin-right: 0.5rem;
+    margin-top: 0.5rem;
+    padding: 0.35rem 1.2rem;
+    background: #1976d2;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  
+  button:hover {
+    background: #145ca5;
+  }
+  
+  form {
+    background: #e3f2fd;
+    padding: 1.2rem;
+    border-radius: 6px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px #0001;
+    max-width: 500px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 0.6rem;
+    font-weight: 500;
+  }
+  
+  input[formControlName] {
+    width: 90%;
+    padding: 0.4rem;
+    margin-top: 0.2rem;
+    margin-bottom: 0.8rem;
+    border: 1px solid #bdbdbd;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+  
+  hr {
+    margin: 1rem 0;
+    border: none;
+    border-top: 1px solid #bdbdbd44;
+  }
