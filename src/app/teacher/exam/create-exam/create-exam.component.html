@@ -1,0 +1,47 @@
+<div class="create-exam-container">
+  <h2>Create New Exam</h2>
+  <form [formGroup]="examForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label>Exam Title</label>
+      <input formControlName="title" type="text" />
+      <div *ngIf="examForm.get('title')?.invalid && examForm.get('title')?.touched" class="error">
+        Title is required.
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Description</label>
+      <textarea formControlName="description"></textarea>
+    </div>
+    <div class="form-group">
+      <label>Duration (minutes)</label>
+      <input formControlName="duration" type="number" min="1"/>
+      <div *ngIf="examForm.get('duration')?.invalid && examForm.get('duration')?.touched" class="error">
+        Enter valid duration.
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Total Marks</label>
+      <input formControlName="totalMarks" type="number" min="1"/>
+      <div *ngIf="examForm.get('totalMarks')?.invalid && examForm.get('totalMarks')?.touched" class="error">
+        Enter valid marks.
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Category</label>
+      <input type="text"
+             placeholder="Type or select a category"
+             [formControl]="categoryCtrl"
+             [matAutocomplete]="auto"
+             formControlName="categoryName" />
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let cat of filteredCategories | async" [value]="cat.categoryName">
+          {{ cat.categoryName }}
+        </mat-option>
+      </mat-autocomplete>
+      <div *ngIf="examForm.get('categoryName')?.invalid && examForm.get('categoryName')?.touched" class="error">
+        Category is required.
+      </div>
+    </div>
+    <button type="submit" [disabled]="examForm.invalid">Create Exam</button>
+  </form>
+</div>
