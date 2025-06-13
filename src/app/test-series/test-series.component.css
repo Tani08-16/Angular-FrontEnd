@@ -16,7 +16,7 @@ body, .test-series-bg {
 .top-content-card {
   width: 100%;
   max-width: 950px;
-  background: rgba(255,255,255,0.91);
+  background: rgba(255,255,255,0.69);
   box-shadow: 0 4px 24px rgba(77,70,200,0.11);
   border-radius: 22px;
   margin: 1.2rem auto 0 auto;
@@ -33,7 +33,7 @@ h1 {
   color: #191c26;
 }
 .subtitle {
-  color: #575d6c;
+  color: #000000;
   font-size: 1rem;
   margin-bottom: 1.01rem;
   font-weight: 400;
@@ -131,7 +131,7 @@ h1 {
 .exams-list-expanded {
   width: 100%;
   max-width: 950px;
-  background: #fff;
+  background: #ffffff76;
   border-radius: 15px;
   margin: 1.1rem 0 0.4rem 0;
   box-shadow: 0 1px 10px rgba(77,70,200,0.08);
@@ -145,10 +145,10 @@ h1 {
   margin-bottom: 1.1rem;
 }
 .exam-category-title {
-  font-size: 0.99rem;
-  font-weight: 600;
+  font-size: 1.1rem;
+  font-weight: 700;
   margin-bottom: 0.37rem;
-  color: #554de8;
+  color: #000000;
   letter-spacing: -.5px;
 }
 .exams-stack {

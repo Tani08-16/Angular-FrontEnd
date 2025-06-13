@@ -1,11 +1,14 @@
 <nav>
   <div class="nav-logo">
-    <img src="assets/images/logo.png" alt="TopRanker Logo">
+    <img src="/HomePage_Logo.png" alt="TopRanker Logo">
   </div>
   <div class="nav-links">
     <a routerLink="/home" routerLinkActive="active">Home</a>
+    <span class="separator">|</span>
     <a *ngIf="isLoggedIn()" [routerLink]="getDashboardLink()" routerLinkActive="active">Dashboard</a>
+    <span *ngIf="isLoggedIn()" class="separator">|</span>
     <a routerLink="/test-series" routerLinkActive="active">Test Series</a>
+    <span class="separator">|</span>
 
     <!-- Profile Dropdown for Student/Teacher -->
     <div
